@@ -1,0 +1,7 @@
+pandas
+numpy
+matplotlib
+SQLAlchemy
+dash
+plotly
+mysql-connector-python
