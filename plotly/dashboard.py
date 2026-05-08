@@ -1,11 +1,24 @@
+import os
+from urllib.parse import quote_plus
 import pandas as pd
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 import dash
 from dash import dcc, html
 import plotly.express as px
 
+load_dotenv()
+
+
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = quote_plus(os.getenv("DB_PASSWORD"))
+DB_HOST = os.getenv("DB_HOST")
+DB_NAME = os.getenv("DB_NAME")
+
 # ── Connect to MySQL ───────────────────────────────────────────────────────────
-engine = create_engine("mysql+mysqlconnector://root:tromb0n3@localhost/laptops_db")
+engine = create_engine(
+    f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
+)
 
 # ── Query 1: Average price by brand ───────────────────────────────────────────
 query1 = pd.read_sql("""
