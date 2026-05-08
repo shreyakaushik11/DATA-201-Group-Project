@@ -188,7 +188,7 @@ MSI Stealth 15 A13VF-028XES Intel Core i7-13620H/32GB/1TB SSD/RTX 4060/15.6'',Ne
 "Medion Akoya E16401 MD62264 Intel Core i5-1135G7/8GB/512GB SSD/16.1""",New,Medion,Akoya,Intel Core i5,8,512,SSD,Integrated,16.1,No,499.0,Intel,Core i5,0,1,0,62.38,0.9746,Budget,Low (<=8GB)
 "Lenovo V15 G2 ALC AMD Ryzen 3 5300U/8 GB/256 GB SSD/15.6""",New,Lenovo,V15,AMD Ryzen 3,8,256,SSD,Integrated,15.6,No,399.0,AMD,Ryzen 3,0,1,0,49.88,1.5586,Budget,Low (<=8GB)
 "ASUS ZenBook 14 OLED UM3402YA-KM512WS AMD Ryzen 7 7730U/16GB/512GB SSD/14""",New,ASUS,ZenBook,AMD Ryzen 7,16,512,SSD,Integrated,14.0,No,1149.0,AMD,Ryzen 7,0,1,0,71.81,2.2441,High-end,Mid (16GB)
-"Portátil Alurin Flex Advance Intel Core I5-1155G7 14""",Refurbished,Alurin,Flex Advance,Intel Core i5,8,0,SSD,Integrated,14.0,No,368.7,Intel,Core i5,0,0,0,46.09,inf,Budget,Low (<=8GB)
+"Portátil Alurin Flex Advance Intel Core I5-1155G7 14""",Refurbished,Alurin,Flex Advance,Intel Core i5,8,0,SSD,Integrated,14.0,No,368.7,Intel,Core i5,0,0,0,46.09,0.0,Budget,Low (<=8GB)
 "Acer Aspire 3 A315-58-32EE Intel Core i3-1115G4/8GB/512GB SSD/15.6""",New,Acer,Aspire,Intel Core i3,8,512,SSD,Integrated,15.6,No,499.0,Intel,Core i3,0,1,0,62.38,0.9746,Budget,Low (<=8GB)
 "ASUS Chromebook Vibe CX55 Flip CX5501FEA-NA0271 Intel Core i3-1115G4/8GB/256GB SSD/15.6"" Táctil",New,ASUS,Chromebook,Intel Core i3,8,256,SSD,Integrated,15.6,Yes,699.0,Intel,Core i3,1,1,0,87.38,2.7305,Mid-range,Low (<=8GB)
 "MSI Stealth 17 Studio A13VG-017ES Intel Core i7-13700H/32GB/1TB SSD/RTX 4070/17.3""",New,MSI,Stealth,Intel Core i7,32,1000,SSD,RTX 4070,17.3,No,2949.0,Intel,Core i7,0,1,1,92.16,2.949,Premium,High (32GB)
