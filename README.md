@@ -6,13 +6,13 @@ Laptop Price Analysis and Dashboard
 ## Project Overview
 This project was developed as part of the DATA-201 course at San José State University. The goal of this project is to analyze laptop prices based on specifications such as brand, CPU, RAM, storage, GPU, screen size, and final price.
 
-The project includes data cleaning, loading the cleaned dataset into a MySQL database, and creating visualizations using a Plotly Dash dashboard.
+The project includes data cleaning, loading the cleaned dataset into a MySQL database, running SQL queries, and creating visualizations using a Plotly Dash dashboard.
 
 ---
 
 ## Team Members
+- Angeli Faith Deanon
 - Shreya Kaushik
-- Faith Deanon
 - Anurag Sanadi
 
 ---
@@ -20,12 +20,15 @@ The project includes data cleaning, loading the cleaned dataset into a MySQL dat
 ## Project Structure
 
 ```text
-datacleaning/       -> Data preprocessing and cleaning notebook
-mysql/              -> MySQL database loading and query work
-plotly/             -> Plotly Dash visualization dashboard
-README.md           -> Project documentation
-requirements.txt    -> Python dependencies
-.gitignore          -> Excludes virtual environment, checkpoints, and environment files
+datacleaning/              -> Data preprocessing and cleaning notebook
+mysql/                     -> MySQL database loading, schema, and SQL setup work
+mysql/laptopDB.ipynb       -> Notebook used to load cleaned data into MySQL
+mysql/setup_laptops_db.sql -> SQL script for database/table setup and performance score
+plotly/                    -> Plotly Dash visualization dashboard
+plotly/dashboard.py        -> Main dashboard application
+README.md                  -> Project documentation
+requirements.txt           -> Python dependencies
+.gitignore                 -> Excludes virtual environment, checkpoints, and environment files
 ```
 
 ---
@@ -113,6 +116,32 @@ into the MySQL table:
 laptops
 ```
 
+The SQL setup file can also be used to create or update the database structure:
+
+```text
+mysql/setup_laptops_db.sql
+```
+
+This SQL script includes the database/table setup and adds the calculated `performance` column used in the dashboard.
+
+---
+
+## Dashboard Features
+
+The Plotly Dash dashboard includes the following visualizations:
+
+1. **Average Performance by Brand**  
+   Shows the average performance score for each laptop brand.
+
+2. **Top 5 Laptops per Brand: Price vs Performance**  
+   Uses the `ROW_NUMBER()` SQL window function to rank laptops by performance within each brand.
+
+3. **Average Laptop Price by Brand**  
+   Shows the average final price for each brand.
+
+4. **Top 10 Best Value Laptops**  
+   Calculates a `value_score` using performance divided by final price to identify laptops with the best performance per dollar.
+
 ---
 
 ## Running the Dashboard
@@ -146,8 +175,9 @@ Copy and paste this URL into your browser to view the Plotly Dash dashboard.
 3. Save the cleaned dataset as `laptops_cleaned.csv`.
 4. Create the MySQL database `laptops_db`.
 5. Load the cleaned dataset into the MySQL table `laptops`.
-6. Query the MySQL database.
-7. Display analysis results using a Plotly Dash dashboard.
+6. Add calculated fields such as `performance`.
+7. Query the MySQL database using Python, Pandas, and SQLAlchemy.
+8. Display analysis results using a Plotly Dash dashboard.
 
 ---
 
