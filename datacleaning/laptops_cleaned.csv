@@ -1,4 +1,4 @@
-Laptop,Status,Brand,Model,CPU,RAM,Storage,Storage type,GPU,Screen,Touch,Final Price,cpu_brand,cpu_series,touch,is_new,has_discrete_gpu,price_per_ram_gb,price_per_storage_gb,price_tier,ram_tier
+laptop,status,brand,model,cpu,ram,storage,storage_type,gpu,screen,touch,final_price,cpu_brand,cpu_series,touch,is_new,has_discrete_gpu,price_per_ram_gb,price_per_storage_gb,price_tier,ram_tier
 "ASUS ExpertBook B1 B1502CBA-EJ0436X Intel Core i5-1235U/8GB/512GB SSD/15.6""",New,ASUS,ExpertBook,Intel Core i5,8,512,SSD,Integrated,15.6,No,1009.0,Intel,Core i5,0,1,0,126.12,1.9707,High-end,Low (<=8GB)
 "Alurin Go Start Intel Celeron N4020/8GB/256GB SSD/15.6""",New,Alurin,Go,Intel Celeron,8,256,SSD,Integrated,15.6,No,299.0,Intel,Celeron,0,1,0,37.38,1.168,Budget,Low (<=8GB)
 "ASUS ExpertBook B1 B1502CBA-EJ0424X Intel Core i3-1215U/8GB/256GB SSD/15.6""",New,ASUS,ExpertBook,Intel Core i3,8,256,SSD,Integrated,15.6,No,789.0,Intel,Core i3,0,1,0,98.62,3.082,Mid-range,Low (<=8GB)
