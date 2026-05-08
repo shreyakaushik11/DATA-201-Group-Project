@@ -24,7 +24,7 @@ engine = create_engine(
 
 
 # Query 1: Average Performance by Brand
-df_avg = pd.read_sql("""
+df_avg_performance = pd.read_sql("""
     SELECT 
         brand,
         ROUND(AVG(performance), 2) AS avg_performance
@@ -53,9 +53,40 @@ df_top5 = pd.read_sql("""
 """, engine)
 
 
-# Graph 1: Bar Chart
+# Query 3: Average Laptop Price by Brand
+df_avg_price = pd.read_sql("""
+    SELECT 
+        brand,
+        ROUND(AVG(final_price), 2) AS avg_price,
+        COUNT(*) AS total_laptops
+    FROM laptops
+    GROUP BY brand
+    ORDER BY avg_price DESC
+""", engine)
+
+
+# Query 4: Top 10 best value laptops based on performance per dollar
+df_best_value = pd.read_sql("""
+    SELECT
+        laptop,
+        brand,
+        model,
+        cpu,
+        ram,
+        storage,
+        final_price,
+        performance,
+        ROUND(performance / final_price, 4) AS value_score
+    FROM laptops
+    WHERE final_price > 0
+    ORDER BY value_score DESC
+    LIMIT 10
+""", engine)
+
+
+# Graph 1: Average Performance by Brand
 fig_bar = px.bar(
-    df_avg,
+    df_avg_performance,
     x="brand",
     y="avg_performance",
     title="Average Performance per Brand",
@@ -74,7 +105,7 @@ fig_bar.update_layout(
 )
 
 
-# Graph 2: Scatter Plot
+# Graph 2: Top 5 Laptops Price vs Performance
 fig_scatter = px.scatter(
     df_top5,
     x="performance",
@@ -100,6 +131,64 @@ fig_scatter.update_traces(
         size=10,
         line=dict(width=1, color="DarkSlateGrey")
     )
+)
+
+
+# Graph 3: Average Laptop Price by Brand
+fig_avg_price = px.bar(
+    df_avg_price,
+    x="brand",
+    y="avg_price",
+    text="avg_price",
+    color="avg_price",
+    color_continuous_scale="teal",
+    title="Average Laptop Price by Brand",
+    labels={
+        "brand": "Brand",
+        "avg_price": "Average Price",
+        "total_laptops": "Total Laptops"
+    },
+    template="plotly_white"
+)
+
+fig_avg_price.update_traces(
+    texttemplate="%{text:.2f}",
+    textposition="outside"
+)
+
+fig_avg_price.update_layout(
+    xaxis_tickangle=-45,
+    coloraxis_showscale=False
+)
+
+
+# Graph 4: Top 10 Best Value Laptops
+fig_best_value = px.bar(
+    df_best_value,
+    x="value_score",
+    y="laptop",
+    orientation="h",
+    color="brand",
+    title="Top 10 Best Value Laptops: Performance per Dollar",
+    labels={
+        "value_score": "Value Score",
+        "laptop": "Laptop"
+    },
+    hover_data={
+        "brand": True,
+        "model": True,
+        "cpu": True,
+        "ram": True,
+        "storage": True,
+        "final_price": ":$,.2f",
+        "performance": True,
+        "value_score": True
+    },
+    template="plotly_white"
+)
+
+fig_best_value.update_layout(
+    yaxis={"categoryorder": "total ascending"}
 )
 
 
@@ -135,12 +224,14 @@ app.layout = html.Div(
             ]
         ),
 
+        # First row: performance and price-performance charts
         html.Div(
             style={
                 "display": "flex",
                 "flexWrap": "wrap",
                 "justifyContent": "center",
-                "gap": "20px"
+                "gap": "20px",
+                "marginBottom": "20px"
             },
             children=[
                 html.Div(
@@ -175,6 +266,40 @@ app.layout = html.Div(
                             figure=fig_scatter
                         )
                     ]
+                )
+            ]
+        ),
+
+        # Second row: average price chart
+        html.Div(
+            style={
+                "backgroundColor": "white",
+                "padding": "15px",
+                "borderRadius": "10px",
+                "boxShadow": "0 4px 6px rgba(0,0,0,0.1)",
+                "marginTop": "20px"
+            },
+            children=[
+                dcc.Graph(
+                    id="avg-price-chart",
+                    figure=fig_avg_price
+                )
+            ]
+        ),
+
+        # Third row: best value chart
+        html.Div(
+            style={
+                "backgroundColor": "white",
+                "padding": "15px",
+                "borderRadius": "10px",
+                "boxShadow": "0 4px 6px rgba(0,0,0,0.1)",
+                "marginTop": "20px"
+            },
+            children=[
+                dcc.Graph(
+                    id="best-value-chart",
+                    figure=fig_best_value
                 )
             ]
         )
